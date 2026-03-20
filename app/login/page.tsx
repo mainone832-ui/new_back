@@ -55,10 +55,10 @@ export default function LoginPage() {
         backgroundPosition: "center",
       }}
     >
-      {/* Overlay for better text readability */}
+      {}
       <div className="absolute inset-0 bg-linear-to-b from-black/30 via-black/25 to-black/35 backdrop-blur-md" />
 
-      {/* Content */}
+      {}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
