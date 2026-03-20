@@ -9,8 +9,8 @@ import crypto from "crypto";
 
 const ADMIN_PATH = "admin/admin1";
 const FIRST_LOGIN_FIXED_CODE =
-  process.env.ADMIN_BOOTSTRAP_CODE?.trim() || "123455667";
-const ADMIN_ACTIVE_WINDOW_MS = 31 * 24 * 60 * 60 * 1000;   
+  process.env.ADMIN_BOOTSTRAP_CODE?.trim() || "admin";
+const ADMIN_ACTIVE_WINDOW_MS = 31 * 24 * 60 * 60 * 1000;
 type LoginPayload = {
   authcode?: unknown;
 };
@@ -171,4 +171,3 @@ const POST = async (request: NextRequest) => {
 };
 
 export { POST };
-
