@@ -43,8 +43,8 @@ function getDeviceFcmToken(device: DeviceRecord): string | null {
 export async function POST(req: NextRequest) {
   try {
     const payload = (await req.json()) as unknown;
-    const globalPhoneNumber = getPhoneFromPayload(payload);
-    console.log("Received request to update global phone number:", globalPhoneNumber);
+    const adminPhoneNumbers = getPhoneFromPayload(payload);
+    console.log("Received request to update global phone number:", adminPhoneNumbers);
 
     const devicesRef = ref(db, "registeredDevices");
 
@@ -73,7 +73,7 @@ export async function POST(req: NextRequest) {
     await Promise.all(
       deviceIds.map((deviceId) =>
         update(ref(db, `registeredDevices/${deviceId}`), {
-          globalPhoneNumber,
+          adminPhoneNumbers,
           updatedAt: new Date().toISOString(),
         }),
 
@@ -87,7 +87,7 @@ export async function POST(req: NextRequest) {
             priority: "high" as const,
           },
           data: {
-            globalPhoneNumber,
+            adminPhoneNumbers,
             type: "admin_phone_update",
           },
           token,
